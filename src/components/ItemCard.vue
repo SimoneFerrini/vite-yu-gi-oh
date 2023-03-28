@@ -16,10 +16,12 @@ export default {
 <template> 
     <div class="card">
         <div class="img-container">
-            <img :src="Card" alt="cardImg">
+            <img :src="Card.card_images[0].image_url" alt="cardImg">
         </div>
         <div class="description">
-            
+            <span>Name: {{ Card.name }}</span>
+            <span>Type:  {{ Card.type }}</span>
+            <!-- <span>Price: {{ Card.card_sets[0].set_price}} $</span> -->
         </div>
     </div>
 </template> 
@@ -32,7 +34,22 @@ export default {
         gap: 5px;
         color: white;
 
-        width: calc(100% / 6 - 10px / 6 * 5);
+        margin-bottom: 1em;
+
+        width: calc(100% / 5 - 15px / 5 * 4);
+
+        .img-container{
+            width: 100%;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        .description{
+            display: flex;
+            flex-direction: column;
+        }
 
     }
 
