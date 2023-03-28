@@ -1,5 +1,5 @@
 <script>
-import Header from "./components/AppHeader.vue";
+import AppHeader from "./components/AppHeader.vue";
 
 export default{
   data(){
@@ -9,13 +9,13 @@ export default{
   },
 
   components:{
-    Header,
+    AppHeader,
   }
 }
 </script>
 
 <template>
-  
+  <AppHeader></AppHeader>
 </template>
 
 <style scoped>
