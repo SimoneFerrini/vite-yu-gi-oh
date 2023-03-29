@@ -28,6 +28,7 @@ export default{
       let newAPIlinks = this.store.APIlink + this.store.APIname + this.store.APIsearch;
       console.log(newAPIlinks);
       this.store.cardsList = newAPIlinks.data;
+      console.log(newAPIlinks.data);
     }
   }
 
