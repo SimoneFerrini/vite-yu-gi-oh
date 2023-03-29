@@ -13,17 +13,22 @@ export default{
   },
 
   created(){
-    axios.get(this.store.APIlinkFifty).then((res) => {
+    axios.get(this.store.APIlink).then((res) => {
 
         this.store.cardsList = res.data.data;
-
-        console.log(res.data.data[0]);
     });
   },
 
   components:{
     ItemCard,
     SearchCard,
+  },
+  methods:{
+    searchCardByName(){
+      let newAPIlinks = this.store.APIlink + this.store.APIname + this.store.APIsearch;
+      console.log(newAPIlinks);
+      this.store.cardsList = newAPIlinks.data;
+    }
   }
 
   
@@ -32,9 +37,9 @@ export default{
 
 <template>
   <div class="main-bg">
-   <SearchCard></SearchCard> 
-   <div v-if="store.cardsList.length == 0" class="loading" >Loading ...</div>
-   <div class="cards-container" v-else>
+   <SearchCard @search="searchCardByName()"></SearchCard> 
+   <!--<div v-if="store.cardsList " class="loading" >Loading ...</div>-->
+   <div class="cards-container">
      <ItemCard v-for="card in store.cardsList" :Card="card"> </ItemCard>
      
     </div>

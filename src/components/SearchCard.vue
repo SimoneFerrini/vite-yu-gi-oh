@@ -15,8 +15,8 @@ export default {
 
 <template> 
     <div class="search-bar">
-        <input type="text" placeholder="Enter a card name">
-        <button>Search</button>
+        <input v-model="store.APIsearch" @keyup.enter="$emit('search')" type="text" placeholder="Enter a card name">
+        <button @click="$emit('search')">Search</button>
     </div>
 </template> 
 
