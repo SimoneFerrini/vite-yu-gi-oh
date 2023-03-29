@@ -16,6 +16,7 @@ export default{
     axios.get(this.store.APIlink).then((res) => {
 
         this.store.cardsList = res.data.data;
+        this.store.cardsListLoad = this.store.cardsList;
     });
   },
 
@@ -31,6 +32,8 @@ export default{
       }).catch((err) =>{
         this.store.cardsList = [];
       })
+
+     
     }
   }
 
@@ -41,9 +44,9 @@ export default{
 <template>
   <div class="main-bg">
    <SearchCard @search="searchCardByName()"></SearchCard> 
-   <div v-if="store.cardsList == 0 && store.APIsearch =='' " class="loading" >Loading ...</div>
-   <span class="error" v-else-if="store.cardsList.length == 0">Name not found!</span>
-   <div class="cards-container">
+   <span class="error" v-if="store.cardsList.length == 0 && store.APIsearch != '' ">Name not found!</span>
+   <div v-else-if="store.cardsListLoad.length == 0" class="loading" >Loading ...</div>
+   <div class="cards-container" v-else>
      <ItemCard v-for="card in store.cardsList" :Card="card"> </ItemCard>
      
     </div>
