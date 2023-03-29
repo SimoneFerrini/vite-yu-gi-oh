@@ -26,9 +26,10 @@ export default{
   methods:{
     searchCardByName(){
       let newAPIlinks = this.store.APIlink + this.store.APIname + this.store.APIsearch;
-      console.log(newAPIlinks);
-      this.store.cardsList = newAPIlinks.data;
-      console.log(newAPIlinks.data);
+      axios.get(newAPIlinks).then((res)=>{
+        this.store.cardsList = res.data.data;
+      })
+      
     }
   }
 
@@ -39,7 +40,7 @@ export default{
 <template>
   <div class="main-bg">
    <SearchCard @search="searchCardByName()"></SearchCard> 
-   <!--<div v-if="store.cardsList " class="loading" >Loading ...</div>-->
+   <div v-if="store.cardsList == 0" class="loading" >Loading ...</div>
    <div class="cards-container">
      <ItemCard v-for="card in store.cardsList" :Card="card"> </ItemCard>
      

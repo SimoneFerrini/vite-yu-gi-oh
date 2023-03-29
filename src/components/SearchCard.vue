@@ -1,6 +1,6 @@
 <script>
 import {store} from '../store';
-
+import SearchCount from './SearchCount.vue';
 
 export default {
     name:"SearchCard",
@@ -10,6 +10,10 @@ export default {
             store,
         }
     },
+
+    components:{
+        SearchCount,
+    }
 }
 </script>
 
@@ -17,6 +21,8 @@ export default {
     <div class="search-bar">
         <input v-model="store.APIsearch" @keyup.enter="$emit('search')" type="text" placeholder="Enter a card name">
         <button @click="$emit('search')">Search</button>
+        
+        <SearchCount></SearchCount>
     </div>
 </template> 
 
